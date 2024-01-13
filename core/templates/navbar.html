@@ -1,0 +1,31 @@
+<nav class="flex items-center justify-between flex-wrap bg-white p-6 px-10">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <span class="font-semibold text-xl tracking-tight text-blue-900"><a href="/">Library Management</a></span>
+    </div>
+    <div class="block lg:hidden">
+        
+    </div>
+    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto px-10">
+        {% if request.user.is_authenticated %}
+            <div class="text-md lg:flex-grow">
+                <a href="{% url 'deposit' %}" class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-700-900 hover:font-black mr-4">
+                    Deposit
+                </a>
+            </div>
+            <div class="flex w-auto">
+                <div class="text-blue-900 my-auto font-black px-5">Welcome, {{ request.user.first_name }} (balance : {{request.user.account.balance}}) </div>
+
+                <a href="{% url 'profile' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 mx-2 px-4 rounded focus:outline-none focus:shadow-outline">Profile</a>
+                <a href="{% url 'logout' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline">Logout</a>
+            </div>
+        {% else %}
+            <div class="text-md lg:flex-grow"></div>
+            <div>
+                <a href="{% url 'login' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 mx-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</a>
+            </div>
+            <div>
+                <a href="{% url 'register' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline">Register</a>
+            </div>
+        {% endif %}
+    </div>
+</nav>
