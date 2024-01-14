@@ -1,17 +1,13 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "./path/to/your/frontend",
-            "use": "@vercel/static-build",
-            "config": { "zeroConfig": true }
-        }
-    ],
+    "builds": [{
+        "src": "vercel_app/wsgi.py",
+        "use": "@ardnt/vercel-python-wsgi",
+        "config": { "maxLambdaSize": "15mb" }
+    }],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/path/to/your/frontend/index.html",
-            "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+            "dest": "vercel_app/wsgi.py"
         }
     ]
 }
