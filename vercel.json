@@ -1,0 +1,17 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "./path/to/your/frontend",
+            "use": "@vercel/static-build",
+            "config": { "zeroConfig": true }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/path/to/your/frontend/index.html",
+            "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+        }
+    ]
+}
