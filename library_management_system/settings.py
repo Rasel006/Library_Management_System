@@ -33,6 +33,10 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://library-management-yv5a.onrender.com','https://*.127.0.0.1']
 
+CORS_ALLOWED_ORIGINS = [
+    "https://library-management-system-puce-seven.vercel.app/",
+    # Add any other allowed origins as needed
+]
 
 # Application definition
 
@@ -49,6 +53,8 @@ INSTALLED_APPS = [
     'transactions',
     'book',
     'category',
+    'corsheaders',
+
 ]
 
 LOGIN_URL = '/accounts/login/'
@@ -61,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'library_management_system.urls'
