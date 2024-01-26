@@ -31,8 +31,7 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://library-management-yv5a.onrender.com','https://*.127.0.0.1']
-
+CSRF_TRUSTED_ORIGINS = ['https://library-management-v2kh.onrender.com','https://*.127.0.0.1']
 
 # Application definition
 
