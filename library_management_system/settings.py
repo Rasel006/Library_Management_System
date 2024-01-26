@@ -33,10 +33,6 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://library-management-yv5a.onrender.com','https://*.127.0.0.1']
 
-CORS_ALLOWED_ORIGINS = [
-    "https://library-management-system-puce-seven.vercel.app/",
-    # Add any other allowed origins as needed
-]
 
 # Application definition
 
@@ -53,9 +49,8 @@ INSTALLED_APPS = [
     'transactions',
     'book',
     'category',
-    'corsheaders',
-
 ]
+
 
 LOGIN_URL = '/accounts/login/'
 
@@ -67,7 +62,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'library_management_system.urls'
@@ -100,19 +94,19 @@ WSGI_APPLICATION = 'library_management_system.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': env("DB_NAME"),
-#        'USER': env("DB_USER"),
-#        'PASSWORD': env("DB_PASSWORD"),
-#        'HOST': env("DB_HOST"),
-#        'PORT': env("DB_PORT"),
-#    }
-# }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env("DB_NAME"),
+        'USER': env("DB_USER"),
+        'PASSWORD': env("DB_PASSWORD"),
+        'HOST': env("DB_HOST"),
+        'PORT': env("DB_PORT"),
+    }
+ }
 DATABASES = {
     'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
         default='postgres://library_management_k0qj_user:VPVswQ7EX6Y5rssS5EJgAbSAayQKOt0q@dpg-cm7ig6fqd2ns73f449q0-a.oregon-postgres.render.com/library_management_k0qj',
     )
 }
@@ -168,9 +162,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
-EMAIL_HOST = 'dummy_host'
-EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'dummy_user@example.com'
-EMAIL_HOST_PASSWORD = 'dummy_password'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")

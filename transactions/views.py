@@ -8,6 +8,8 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+import sys
+sys.path.append("/c/Users/user/OneDrive/Documents/Phitron batch 3/Library_Management_System/library_management_system/")
 
 # Create your views here.
 def send_transaction_email(user,amount,subject,template):
