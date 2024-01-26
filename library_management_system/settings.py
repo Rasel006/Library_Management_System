@@ -33,6 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://library-management-v2kh.onrender.com','https://*.127.0.0.1']
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,7 +50,6 @@ INSTALLED_APPS = [
     'book',
     'category',
 ]
-
 
 LOGIN_URL = '/accounts/login/'
 
@@ -93,14 +93,20 @@ WSGI_APPLICATION = 'library_management_system.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': env("DB_NAME"),
+#        'USER': env("DB_USER"),
+#        'PASSWORD': env("DB_PASSWORD"),
+#        'HOST': env("DB_HOST"),
+#        'PORT': env("DB_PORT"),
+#    }
+# }
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default='postgres://librarymanage_user:jEHkH1HsoexRL8tZcBYUJuK4MDJConON@dpg-cmq0pg021fec739j3rm0-a.oregon-postgres.render.com/librarymanage',
+        default='postgres://library_management_k0qj_user:VPVswQ7EX6Y5rssS5EJgAbSAayQKOt0q@dpg-cm7ig6fqd2ns73f449q0-a.oregon-postgres.render.com/library_management_k0qj',
     )
 }
 
@@ -159,5 +165,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = env("EMAIL")
+EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
