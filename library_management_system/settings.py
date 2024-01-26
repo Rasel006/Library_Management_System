@@ -95,19 +95,13 @@ WSGI_APPLICATION = 'library_management_system.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
-    }
- }
+# Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://library_management_k0qj_user:VPVswQ7EX6Y5rssS5EJgAbSAayQKOt0q@dpg-cm7ig6fqd2ns73f449q0-a.oregon-postgres.render.com/library_management_k0qj',
+        # Feel free to alter this value to suit your needs.
+        default='postgres://librarymanage_user:jEHkH1HsoexRL8tZcBYUJuK4MDJConON@dpg-cmq0pg021fec739j3rm0-a.oregon-postgres.render.com/librarymanage',
     )
 }
 
