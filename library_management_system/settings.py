@@ -52,6 +52,8 @@ INSTALLED_APPS = [
 ]
 
 LOGIN_URL = '/accounts/login/'
+# settings.py
+LOGOUT_REDIRECT_URL = 'home'  # Replace 'home' with the name of your home view
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
