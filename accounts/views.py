@@ -31,11 +31,14 @@ class UserLoginView(LoginView):
         return reverse_lazy('home')
 
 class UserLogoutView(LogoutView):
-    def get_success_url(self):
+    def dispatch(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
             logout(self.request)
-        messages.success(self.request, "Logout successfully")
-        return reverse_lazy('home')
+            messages.success(self.request, "Logout successfully")
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_next_page(self):
+        return reverse_lazy('home')  # Change 'home' to the desired URL after logout
 
 class ProfileView(LoginRequiredMixin, ListView):
     template_name = 'accounts/profile.html'
